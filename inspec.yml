@@ -1,12 +1,10 @@
 ---
-name: linux-baseline
-title: DevSec Linux Security Baseline
-maintainer: DevSec Hardening Framework Team
-copyright: DevSec Hardening Framework Team
-copyright_email: hello@dev-sec.io
-license: Apache-2.0
-summary: Test suite for best practice Linux OS hardening
-inspec_version: '>= 4.6.3'
-version: 2.8.3
-supports:
-    - os-family: linux
+- hosts: localhost
+  collections:
+    - devsec.hardening
+  roles:
+    - devsec.hardening.os_hardening
+  vars:
+    sysctl_overwrite:
+      # Enable IPv4 traffic forwarding.
+      net.ipv4.ip_forward: 1
